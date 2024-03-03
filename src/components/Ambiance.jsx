@@ -2,7 +2,7 @@ import Audio from "./Audio";
 export default function Ambiance({ name, audios, ambianceId }) {
     const audioElements = audios.map((audio) => {
         return (
-            <Audio key={audio.id} name={audio.name} url={audio.url} />
+            <Audio key={audio.id} name={audio.name} file={audio.file} />
         );
     });
     return (

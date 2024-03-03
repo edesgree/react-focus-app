@@ -1,4 +1,8 @@
-
+import birds from './assets/audio/birds.wav';
+import cat from './assets/audio/cat.wav';
+import insects from './assets/audio/insects.wav';
+import rain from './assets/audio/rain.wav';
+import waves from './assets/audio/waves.wav';
 export const ambianceData = [
     {
         id: 1,
@@ -19,26 +23,26 @@ export const audios = [
     {
         id: 1,
         name: 'Birds',
-        url: 'birds.mp3'
+        file: birds
     },
     {
         id: 2,
-        name: 'Wind',
-        url: 'wind.mp3'
+        name: 'Waves',
+        file: waves
     },
     {
         id: 3,
         name: 'Insects',
-        url: 'insects.mp3'
+        file: insects
     },
     {
         id: 4,
-        name: 'Waves',
-        url: 'waves.mp3'
+        name: 'cat',
+        file: cat
     },
     {
         id: 5,
         name: 'Rain',
-        url: 'rain.mp3'
+        file: rain
     },
 ];

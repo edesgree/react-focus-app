@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import cat from './assets/audio/cat.wav';
 import Ambiance from './components/Ambiance';
 import Ambiances from './components/Ambiances';
 import { ambianceData, audios } from './data';
 function App() {
-    const [count, setCount] = useState(0);
+
     const ambianceElements = ambianceData.map((ambiance) => {
         const ambianceAudios = ambiance.audiosId.map((audioId) => {
             return audios.find((audio) => audio.id === audioId);
@@ -14,7 +14,7 @@ function App() {
     );
     return (
         <>
-
+            test<audio controls src={cat} ></audio>
             <h1>Focus app</h1>
 
 
