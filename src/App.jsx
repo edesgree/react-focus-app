@@ -1,29 +1,26 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-
-
+import Ambiance from './components/Ambiance';
+import Ambiances from './components/Ambiances';
+import { ambianceData, audios } from './data';
 function App() {
     const [count, setCount] = useState(0);
-
+    const ambianceElements = ambianceData.map((ambiance) => {
+        const ambianceAudios = ambiance.audiosId.map((audioId) => {
+            return audios.find((audio) => audio.id === audioId);
+        });
+        console.log(ambianceAudios);
+        return <Ambiance key={ambiance.id} ambianceId={ambiance.id} name={ambiance.name} audios={ambianceAudios} />;
+    }
+    );
     return (
         <>
-            <div>
-                <a href="https://vitejs.dev" target="_blank">
-                    <img src={viteLogo} className="logo" alt="Vite logo" />
-                </a>
-                <a href="https://react.dev" target="_blank">
-                    <img src={reactLogo} className="logo react" alt="React logo" />
-                </a>
-            </div>
+
             <h1>Focus app</h1>
-            <div className="card">
-                <button onClick={() => setCount((count) => count + 1)}>
-                    count is {count}
-                </button>
 
-            </div>
 
+            <Ambiances>
+                {ambianceElements}
+            </Ambiances>
         </>
     );
 }
