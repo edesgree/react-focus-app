@@ -45,6 +45,8 @@ input[type="range"]::-webkit-slider-thumb:active {
 
 //when is disabled
 input[type='range']:disabled {
-  background: rgba(white, .15);
+
+
+  background-image: linear-gradient(rgba(white, .5), rgba(white, .5));
   cursor: not-allowed;
 }

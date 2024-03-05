@@ -60,7 +60,7 @@ const Audio = ({ name, audioId, icon, file, isAmbiancePlaying, ambianceVolume })
     return (
         <div id={audioId}>
 
-            <PlayPauseButton onClickAction={togglePlay} initialDisabled={!isAmbiancePlaying} emoji={icon} title={name} />
+            <PlayPauseButton onClickAction={togglePlay} initialDisabled={!isPlaying} emoji={icon} title={name} />
 
             {isPlaying &&
                 <div className={styles.slider}>

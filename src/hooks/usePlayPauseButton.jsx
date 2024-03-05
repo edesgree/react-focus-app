@@ -1,12 +1,12 @@
 import React from "react";
 
-const usePlayPauseButton = (initialIsPlaying = false, onClickAction) => {
-    const [isPlaying, setIsPlaying] = React.useState(initialIsPlaying);
+const usePlayPauseButton = (initialIsActive = false, onClickAction) => {
+    const [isActive, setIsActive] = React.useState(initialIsActive);
     const handleClick = () => {
-        setIsPlaying(prevState => !prevState);
+        setIsActive(prevState => !prevState);
         onClickAction(); // call the provided onclick action
     };
-    return [isPlaying, handleClick];
+    return [isActive, handleClick];
 };
 
 export default usePlayPauseButton;

@@ -11,7 +11,7 @@ export default function Ambiance({ name, icon, ambianceAudiosIds, ambianceId, cu
     const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(null);
     const [AmbianceVolume, setAmbianceVolume] = React.useState(.5);
-
+    const [isAmbiancePlaying, setIsAmbiancePlaying] = React.useState(false);
     const sliderVolumeMaxRange = 1;
 
     React.useEffect(() => {
@@ -31,15 +31,20 @@ export default function Ambiance({ name, icon, ambianceAudiosIds, ambianceId, cu
             }
         }
         loadAudios();
+        // start playing on first load
+        togglePlayPause();
     }, []);
 
 
     const togglePlayPause = () => {
         if (currentPlayingAmbiance === ambianceId) {
             setCurrentPlayingAmbiance(null);
+            setIsAmbiancePlaying(false);
         } else {
             setCurrentPlayingAmbiance(ambianceId);
+            setIsAmbiancePlaying(true);
         }
+        console.log('currentPlayingAmbiance', currentPlayingAmbiance);
     };
     const handleAmbianceVolumeChange = (e) => {
         setAmbianceVolume(e.target.value);
@@ -52,7 +57,7 @@ export default function Ambiance({ name, icon, ambianceAudiosIds, ambianceId, cu
                 name={audio.name}
                 file={audio.file}
                 icon={audio.emoji}
-                isAmbiancePlaying={currentPlayingAmbiance === ambianceId}
+                isAmbiancePlaying={isAmbiancePlaying}
                 ambianceVolume={AmbianceVolume}
             />
         );
@@ -69,7 +74,7 @@ export default function Ambiance({ name, icon, ambianceAudiosIds, ambianceId, cu
             <header>
                 <h2>{name} {icon}</h2>
                 <div className={styles.controls}>
-                    <PlayPauseButton onClickAction={togglePlayPause} initialDisabled={false} title={name} />
+                    <PlayPauseButton onClickAction={togglePlayPause} initialDisabled={isAmbiancePlaying} title={name} />
                     <input
                         type="range"
                         min="0"
@@ -78,7 +83,7 @@ export default function Ambiance({ name, icon, ambianceAudiosIds, ambianceId, cu
                         value={AmbianceVolume}
                         onChange={handleAmbianceVolumeChange}
                         style={getInputRangeBackgroundSize(AmbianceVolume, sliderVolumeMaxRange)}
-                        disabled={currentPlayingAmbiance !== ambianceId}
+                        disabled={!isAmbiancePlaying}
                     />
                 </div>
 

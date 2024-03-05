@@ -5,7 +5,7 @@ import usePlayPauseButton from "../../hooks/usePlayPauseButton";
 
 export default function PlayPauseButton({ initialDisabled, onClickAction, emoji, title }) {
     const [isPlaying, handleClick] = usePlayPauseButton(initialDisabled, onClickAction);
-
+    console.log(`initialDisabled  ${initialDisabled} for ${title} and is playing ${isPlaying}`);
     return (
         <button
             className={`button-toggle button-play-pause ${emoji && (initialDisabled || !isPlaying) ? 'fade' : ''} `}
