@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Ambiance.module.scss";
 import Audio from "./Audio";
 //import { usePlayPause } from "./PlayPauseContext";
+import PlayPauseButton from "./ui/PlayPauseButton";
 import { getInputRangeBackgroundSize } from "./utils/utils";
 
 export default function Ambiance({ name, icon, audios, ambianceId, currentPlayingAmbiance, setCurrentPlayingAmbiance }) {
@@ -37,7 +38,8 @@ export default function Ambiance({ name, icon, audios, ambianceId, currentPlayin
         <div title={name}>
             <header>
                 <h2>Ambiance {name} {icon}</h2>
-                <button onClick={togglePlayPause}>{currentPlayingAmbiance === ambianceId ? 'Pause' : 'Play'}</button>
+
+                <PlayPauseButton onClickAction={togglePlayPause} initialDisabled={currentPlayingAmbiance === ambianceId} />
                 <input
                     type="range"
                     min="0"

@@ -5,25 +5,28 @@ import styles from "./Ambiances.module.scss";
 export default function Ambiances({ children }) {
     const [currentPlayingAmbiance, setCurrentPlayingAmbiance] = React.useState(null);
     const [selectedAmbiance, setSelectedAmbiance] = React.useState(null);
-    const ambianceElements = ambianceData.map((ambiance) => {
-        const ambianceAudios = ambiance.audiosId.map((audioId) => {
-            return audios.find((audio) => audio.id === audioId);
-        });
-        console.log(ambianceAudios);
-        return selectedAmbiance === ambiance.id && (
-            <Ambiance
-                key={ambiance.id}
-                ambianceId={ambiance.id}
-                name={ambiance.name}
-                icon={ambiance.emoji}
-                audios={ambianceAudios}
-                currentPlayingAmbiance={currentPlayingAmbiance}
-                setCurrentPlayingAmbiance={setCurrentPlayingAmbiance}
-            />
+
+    const ambianceElements = ambianceData
+        .filter((ambiance) => selectedAmbiance === ambiance.id)
+        .map((ambiance) => {
+            const ambianceAudios = ambiance.audiosId.map((audioId) => {
+                return audios.find((audio) => audio.id === audioId);
+            });
+            console.log(ambianceAudios);
+            return (
+                <Ambiance
+                    key={ambiance.id}
+                    ambianceId={ambiance.id}
+                    name={ambiance.name}
+                    icon={ambiance.emoji}
+                    audios={ambianceAudios}
+                    currentPlayingAmbiance={currentPlayingAmbiance}
+                    setCurrentPlayingAmbiance={setCurrentPlayingAmbiance}
+                />
+            );
+        }
         );
-    }
-    );
-    const ambianceMenu = ambianceData.map((ambiance) => {
+    const ambiancesMenu = ambianceData.map((ambiance) => {
         return (
             <div
                 key={ambiance.id}
@@ -38,10 +41,11 @@ export default function Ambiances({ children }) {
         <div>
             <h2>Ambiances</h2>
             <nav className={styles.ambiancesList}>
-                {ambianceMenu}
+                {ambiancesMenu}
             </nav>
 
             {ambianceElements}
+            {children}
         </div>
     );
 }

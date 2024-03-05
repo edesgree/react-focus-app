@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./Audio.module.scss";
+import PlayPauseButton from "./ui/PlayPauseButton";
 import { getInputRangeBackgroundSize } from "./utils/utils";
-const Audio = ({ name, audioId, icon, file, isAmbiancePlaying, ambianceVolume }) => {
 
-    //const { isAmbiancePlaying } = React.useContext(PlayPauseContext);
+const Audio = ({ name, audioId, icon, file, isAmbiancePlaying, ambianceVolume }) => {
 
     const [isPlaying, setIsPlaying] = React.useState(false);
     const [volume, setVolume] = React.useState(.5);
@@ -58,20 +58,25 @@ const Audio = ({ name, audioId, icon, file, isAmbiancePlaying, ambianceVolume })
     return (
         <div id={audioId}>
             <h2>{name}{icon}</h2>
-            <button onClick={togglePlay}>{isPlaying ? 'Pause' : 'Play'}</button>
-            <div className={styles.slider}>
-                <input
-                    type="range"
-                    min="0"
-                    max={sliderVolumeMaxRange}
-                    step="0.01"
-                    value={volume}
-                    onChange={handleVolumeChange}
-                    style={getInputRangeBackgroundSize(volume, sliderVolumeMaxRange)}
-                    disabled={!isPlaying}
-                />
-            </div>
+            <PlayPauseButton onClickAction={togglePlay} initialDisabled={isPlaying} emoji={icon} />
 
+            <button onClick={togglePlay}>{isPlaying ? 'Pause' : 'Play'}</button>
+            {isPlaying &&
+                <div className={styles.slider}>
+                    <input
+                        type="range"
+                        min="0"
+                        max={sliderVolumeMaxRange}
+                        step="0.01"
+                        value={volume}
+                        onChange={handleVolumeChange}
+                        style={getInputRangeBackgroundSize(volume, sliderVolumeMaxRange)}
+                        disabled={!isPlaying}
+                    />
+                </div>
+            }
+            {isPlaying && <p>Playing</p>}
+            {isAmbiancePlaying && <p>Ambiance is playing</p>}
             <audio ref={audioRef} controls={false} loop>
                 <source src={file} type="audio/mpeg" />
                 Your browser does not support the audio element.
