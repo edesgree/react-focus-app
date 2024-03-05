@@ -26,6 +26,7 @@ const Audio = ({ name, audioId, icon, file, isAmbiancePlaying, ambianceVolume })
         console.log('isAmbiancePlaying in audio', isAmbiancePlaying);
     }, [isAmbiancePlaying]);
 
+    // update audio volume when ambiance volume changes
     React.useEffect(() => {
         updateVolume(ambianceVolume);
     }, [ambianceVolume]);
@@ -37,7 +38,10 @@ const Audio = ({ name, audioId, icon, file, isAmbiancePlaying, ambianceVolume })
         if (audioElement) {
             audioElement.volume = newVolume;
         }
+
     };
+
+
     const togglePlay = () => {
         const audioElement = audioRef.current;
         if (audioElement?.paused) {
@@ -53,12 +57,10 @@ const Audio = ({ name, audioId, icon, file, isAmbiancePlaying, ambianceVolume })
         updateVolume(e.target.value);
     };
 
-
-
     return (
         <div id={audioId}>
 
-            <PlayPauseButton onClickAction={togglePlay} initialDisabled={isPlaying} emoji={icon} title={name} />
+            <PlayPauseButton onClickAction={togglePlay} initialDisabled={!isAmbiancePlaying} emoji={icon} title={name} />
 
             {isPlaying &&
                 <div className={styles.slider}>

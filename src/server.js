@@ -17,11 +17,11 @@ export function makeServer({ environment = 'development' } = {}) {
                 ambiances: [
                     {
                         id: 1,
-                        name: 'Forest',
+                        name: 'Campfire',
                         audiosId: [
-                            'insects-1', 'wind-1', 'birds-1'
+                            'fire-1', 'crickets-1'
                         ],
-                        emoji: '🌲'
+                        emoji: '🔥'
                     },
                     {
                         id: 2,
@@ -33,31 +33,126 @@ export function makeServer({ environment = 'development' } = {}) {
                     },
                     {
                         id: 3,
-                        name: 'Jungle',
+                        name: 'Train',
                         audiosId: [
-                            'insects-1', 'birds-1', 'rain-1'
+                            'tracks-1', 'wind-1'
                         ],
-                        emoji: '🦜'
+                        emoji: '🚂'
+                    },
+
+                    {
+                        id: 4,
+                        name: 'Rainfall',
+                        audiosId: [
+                            'rain-1', 'rainUmbrella-1'
+                        ],
+                        emoji: '🌧️'
 
                     },
                     {
-                        id: 4,
+                        id: 5,
+                        name: 'Forest',
+                        audiosId: [
+                            'birds-1', 'wind-1', 'insects-1'
+                        ],
+                        emoji: '🌲'
+
+                    },
+                    {
+                        id: 6,
+                        name: 'Garden',
+                        audiosId: [
+                            'chimes-1', 'wind-1', 'insects-1'
+                        ],
+                        emoji: '🌷'
+
+                    },
+                    {
+                        id: 7,
                         name: 'Café',
                         audiosId: [
-                            'people-1', 'cat-1', 'jazz-1'
+                            'people-1', 'cat-1', 'jazz-1' /*'coffee maker' */
                         ],
                         emoji: '☕'
                     },
                     {
-                        id: 5,
-                        name: 'Storm',
+                        id: 8,
+                        name: 'Thunderstorm',
                         audiosId: [
-                            'rain-1', 'thunder-1', 'wind-1'
+                            'rain-1', 'loudRain-1', 'thunder-1', 'wind-1'
                         ],
                         emoji: '⛈️'
+                    },
+                    {
+                        id: 9,
+                        name: 'Creek',
+                        audiosId: [
+                            'stream-1', 'wind-1'
+                        ],
+                        emoji: '🏞️'
+                    },
+                    {
+                        id: 10,
+                        name: 'Office',
+                        audiosId: [
+                            'people-1', 'copier-1', 'airConditioner-1', 'fluorescentHum-1', 'keyboard-1'
+                        ],
+                        emoji: '🏢'
+                    },
+                    {
+                        id: 11,
+                        name: 'Custom',
+                        audiosId: [
+                            'fire-1',
+                            'crickets-1',
+                            'tracks-1',
+                            'rainUmbrella-1',
+                            'birds-1',
+                            'waves-1',
+                            'insects-1',
+                            'wind-1',
+                            'seagull-1',
+                            'rain-1',
+                            'chimes-1',
+                            'people-1',
+                            'jazz-1',
+                            'cat-1',
+                            'loudRain-1',
+                            'thunder-1',
+                            'stream-1',
+                            'copier-1',
+                            'airConditioner-1',
+                            'neon-1',
+                            'keyboard-1'
+                        ],
+                        emoji: '🎛️'
                     }
                 ],
                 audios: [
+                    {
+                        id: 'fire-1',
+                        name: 'Fire',
+                        file: '/audio/fire-1.mp3',
+                        emoji: '🔥'
+                    },
+                    {
+                        id: 'crickets-1',
+                        name: 'Crickets',
+                        file: '/audio/crickets-1.mp3',
+                        emoji: '🦗'
+                    },
+                    {
+                        id: 'tracks-1',
+                        name: 'Tracks',
+                        file: '/audio/tracks-1.mp3',
+                        emoji: '🚂'
+                    },
+                    {
+                        id: 'rainUmbrella-1',
+                        name: 'Rain under umbrella',
+                        file: '/audio/rainUmbrella-1.mp3',
+                        emoji: '🌂'
+                    },
                     {
                         id: 'birds-1',
                         name: 'Birds',
@@ -77,24 +172,6 @@ export function makeServer({ environment = 'development' } = {}) {
                         emoji: '🐞'
                     },
                     {
-                        id: 'cat-1',
-                        name: 'cat',
-                        file: '/audio/cat-1.mp3',
-                        emoji: '🐱'
-                    },
-                    {
-                        id: 'rain-1',
-                        name: 'Rain',
-                        file: '/audio/rain-1.mp3',
-                        emoji: '🌧️'
-                    },
-                    {
-                        id: 'thunder-1',
-                        name: 'Thunder',
-                        file: '/audio/thunder-1.mp3',
-                        emoji: '⚡'
-                    },
-                    {
                         id: 'wind-1',
                         name: 'Wind',
                         file: '/audio/wind-1.mp3',
@@ -107,6 +184,18 @@ export function makeServer({ environment = 'development' } = {}) {
                         emoji: '🐦‍⬛'
                     },
                     {
+                        id: 'rain-1',
+                        name: 'Rain',
+                        file: '/audio/rain-1.mp3',
+                        emoji: '🌧️'
+                    },
+                    {
+                        id: 'chimes-1',
+                        name: 'Chimes',
+                        file: '/audio/chimes-1.mp3',
+                        emoji: '🎐'
+                    },
+                    {
                         id: 'people-1',
                         name: 'People',
                         file: '/audio/people-1.mp3',
@@ -117,6 +206,54 @@ export function makeServer({ environment = 'development' } = {}) {
                         name: 'Jazz',
                         file: '/audio/jazz-1.mp3',
                         emoji: '🎷'
+                    },
+                    {
+                        id: 'cat-1',
+                        name: 'cat',
+                        file: '/audio/cat-1.mp3',
+                        emoji: '🐱'
+                    },
+                    {
+                        id: 'loudRain-1',
+                        name: 'Loud rain',
+                        file: '/audio/loudRain-1.mp3',
+                        emoji: '🌧️'
+                    },
+                    {
+                        id: 'thunder-1',
+                        name: 'Thunder',
+                        file: '/audio/thunder-1.mp3',
+                        emoji: '⚡'
+                    },
+                    {
+                        id: 'stream-1',
+                        name: 'Stream',
+                        file: '/audio/stream-1.mp3',
+                        emoji: '🏞️'
+                    },
+                    {
+                        id: 'copier-1',
+                        name: 'Copier',
+                        file: '/audio/copier-1.mp3',
+                        emoji: '🖨️'
+                    },
+                    {
+                        id: 'airConditioner-1',
+                        name: 'Air Conditioner',
+                        file: '/audio/airConditioner-1.mp3',
+                        emoji: '❄️'
+                    },
+                    {
+                        id: 'neon-1',
+                        name: 'neon',
+                        file: '/audio/neon-1.mp3',
+                        emoji: '💡'
+                    },
+                    {
+                        id: 'keyboard-1',
+                        name: 'keyboard',
+                        file: '/audio/keyboard-1.mp3',
+                        emoji: '⌨️'
                     }
                 ],
             });

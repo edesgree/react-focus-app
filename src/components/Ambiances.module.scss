@@ -1,14 +1,22 @@
-.ambiancesList {
-  background: black;
+nav.ambiancesList {
+  background: rgba(black, .4);
   border-radius: 1rem;
-  display: flex;
-  gap: 2rem;
+  display: grid;
+  gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
-  margin-bottom: 2rem;
+
   padding: 1rem;
 
+  &.opened {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 }
 
 .selected {
   background-color: var(--light-blue);
+}
+
+.ambiances {
+  max-width: 350px;
 }

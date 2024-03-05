@@ -1,9 +1,31 @@
 .audioList {
   display: grid;
-  gap: 2rem;
+  gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
 }
 
 header {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 2rem;
+
+  .controls {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+
+    .button-toggle {
+      font-size: 3rem;
+    }
+  }
+}
+
+.ambiance {
+  background-color: rgba(#333, .8);
+  border-radius: 0 0 2rem 2rem;
+  padding: 1rem;
+
+  h2 {
+    margin: 0;
+  }
 }

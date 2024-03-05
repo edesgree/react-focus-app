@@ -5,13 +5,11 @@ import usePlayPauseButton from "../../hooks/usePlayPauseButton";
 
 export default function PlayPauseButton({ initialDisabled, onClickAction, emoji, title }) {
     const [isPlaying, handleClick] = usePlayPauseButton(initialDisabled, onClickAction);
-    emoji ? console.log(`play pause button ${emoji} isplaying:${isPlaying}`) : null;
-
 
     return (
         <button
-            className={`button-toggle ${!initialDisabled ? 'fade' : ''} `}
-            title={`${initialDisabled ? 'turn off ' : 'turn on '}${title}`}
+            className={`button-toggle button-play-pause ${emoji && (initialDisabled || !isPlaying) ? 'fade' : ''} `}
+            title={`${isPlaying ? 'turn off ' : 'turn on '}${title}`}
             onClick={handleClick}
         >
             {
@@ -26,8 +24,6 @@ export default function PlayPauseButton({ initialDisabled, onClickAction, emoji,
                             <img src={IconPlay} alt="play" aria-label="play" />
                         )
                 )
-
-
             }
         </button >
     );

@@ -62,9 +62,9 @@ export default function Ambiances({ children }) {
         return <h1 aria-live="assertive">There was an error: {error.message}</h1>;
     }
     return (
-        <div>
+        <div className={styles.ambiances}>
             <h2>Ambiances</h2>
-            <nav className={styles.ambiancesList}>
+            <nav className={`${selectedAmbiance ? styles.opened : null} ${styles.ambiancesList}`}>
                 {ambiancesMenu}
             </nav>
 

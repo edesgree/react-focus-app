@@ -1,23 +1,19 @@
 import React from "react";
 import { getAudios } from "../utils/api";
+import { getInputRangeBackgroundSize } from "../utils/utils";
 import styles from "./Ambiance.module.scss";
 import Audio from "./Audio";
-//import { usePlayPause } from "./PlayPauseContext";
-import { getInputRangeBackgroundSize } from "../utils/utils";
 import PlayPauseButton from "./ui/PlayPauseButton";
 
 export default function Ambiance({ name, icon, ambianceAudiosIds, ambianceId, currentPlayingAmbiance, setCurrentPlayingAmbiance }) {
-    //const { isAmbiancePlaying, togglePlayPause } = usePlayPause();
-    //const [isAmbiancePlaying, setIsAmbiancePlaying] = React.useState(false);
+
     const [audios, setAudios] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(null);
     const [AmbianceVolume, setAmbianceVolume] = React.useState(.5);
 
     const sliderVolumeMaxRange = 1;
-    /*const ambianceAudios = ambianceAudiosIds.map((audioId) => {
-        return ambianceAudiosIds.find((audio) => audio.id === audioId);
-    });*/
+
     React.useEffect(() => {
         async function loadAudios() {
             setLoading(true);
@@ -69,11 +65,11 @@ export default function Ambiance({ name, icon, ambianceAudiosIds, ambianceId, cu
         return <h1 aria-live="assertive">There was an error: {error.message}</h1>;
     }
     return (
-        <div >
+        <div className={styles.ambiance}>
             <header>
                 <h2>{name} {icon}</h2>
-                <div>
-                    <PlayPauseButton onClickAction={togglePlayPause} initialDisabled={currentPlayingAmbiance === ambianceId} />
+                <div className={styles.controls}>
+                    <PlayPauseButton onClickAction={togglePlayPause} initialDisabled={false} title={name} />
                     <input
                         type="range"
                         min="0"
