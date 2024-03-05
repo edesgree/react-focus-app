@@ -5,7 +5,7 @@ const Audio = ({ name, audioId, icon, file, isAmbiancePlaying, ambianceVolume })
 
     //const { isAmbiancePlaying } = React.useContext(PlayPauseContext);
 
-    const [isPlaying, setIsPlaying] = React.useState(null);
+    const [isPlaying, setIsPlaying] = React.useState(false);
     const [volume, setVolume] = React.useState(.5);
 
     const audioRef = React.useRef(null);
@@ -27,15 +27,15 @@ const Audio = ({ name, audioId, icon, file, isAmbiancePlaying, ambianceVolume })
     }, [isAmbiancePlaying]);
 
     React.useEffect(() => {
-        setVolumeFn(ambianceVolume);
+        updateVolume(ambianceVolume);
     }, [ambianceVolume]);
 
-    const setVolumeFn = (value) => {
+    const updateVolume = (newVolume) => {
         const audioElement = audioRef.current;
-        setVolume(value);
+        setVolume(newVolume);
         // change volume of current audio element
         if (audioElement) {
-            audioElement.volume = volume;
+            audioElement.volume = newVolume;
         }
     };
     const togglePlay = () => {
@@ -50,8 +50,7 @@ const Audio = ({ name, audioId, icon, file, isAmbiancePlaying, ambianceVolume })
     };
 
     const handleVolumeChange = (e) => {
-        setVolumeFn(e.target.value);
-
+        updateVolume(e.target.value);
     };
 
 
