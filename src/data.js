@@ -12,11 +12,11 @@ import wind1 from './assets/audio/wind-1.mp3';
 export const ambianceData = [
     {
         id: 1,
-        name: 'Forest',
+        name: 'Campfire',
         audiosId: [
-            'insects-1', 'wind-1', 'birds-1'
+            'fire-1', 'crickets-1'
         ],
-        emoji: '🌲'
+        emoji: '🔥'
     },
     {
         id: 2,
@@ -28,28 +28,71 @@ export const ambianceData = [
     },
     {
         id: 3,
-        name: 'Jungle',
+        name: 'Train',
         audiosId: [
-            'insects-1', 'birds-1', 'rain-1'
+            'tracks-1', 'wind-1'
         ],
-        emoji: '🦜'
+        emoji: '🚂'
+    },
+
+    {
+        id: 4,
+        name: 'Rainfall',
+        audiosId: [
+            'rain-1', 'rainUmbrella-1'
+        ],
+        emoji: '🌧️'
 
     },
     {
-        id: 4,
+        id: 5,
+        name: 'Forest',
+        audiosId: [
+            'birds-1', 'wind-1', 'insects-1'
+        ],
+        emoji: '🌲'
+
+    },
+    {
+        id: 6,
+        name: 'Garden',
+        audiosId: [
+            'chimes-1', 'wind-1', 'insects-1'
+        ],
+        emoji: '🌷'
+
+    },
+    {
+        id: 7,
         name: 'Café',
         audiosId: [
-            'people-1', 'cat-1', 'jazz-1'
+            'people-1', 'cat-1', 'jazz-1' /*'coffee maker' */
         ],
         emoji: '☕'
     },
     {
-        id: 5,
-        name: 'Storm',
+        id: 8,
+        name: 'Thunderstorm',
         audiosId: [
-            'rain-1', 'thunder-1', 'wind-1'
+            'rain-1', 'loudRain-1', 'thunder-1', 'wind-1'
         ],
         emoji: '⛈️'
+    },
+    {
+        id: 9,
+        name: 'Creek',
+        audiosId: [
+            'stream-1', 'wind-1'
+        ],
+        emoji: '🏞️'
+    },
+    {
+        id: 10,
+        name: 'Office',
+        audiosId: [
+            'people-1', 'copier-1', 'airConditioner-1', 'fluorescentHum-1', 'keyboard-1'
+        ],
+        emoji: '🏢'
     }
 ];
 export const audios = [
