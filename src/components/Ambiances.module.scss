@@ -1,8 +1,11 @@
 .ambiancesList {
-  display: grid;
+  background: black;
+  border-radius: 1rem;
+  display: flex;
   gap: 2rem;
   grid-template-columns: repeat(3, 1fr);
-
+  margin-bottom: 2rem;
+  padding: 1rem;
 
 }
 

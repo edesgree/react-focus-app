@@ -69,21 +69,23 @@ export default function Ambiance({ name, icon, ambianceAudiosIds, ambianceId, cu
         return <h1 aria-live="assertive">There was an error: {error.message}</h1>;
     }
     return (
-        <div title={name}>
+        <div >
             <header>
-                <h2>Ambiance {name} {icon}</h2>
+                <h2>{name} {icon}</h2>
+                <div>
+                    <PlayPauseButton onClickAction={togglePlayPause} initialDisabled={currentPlayingAmbiance === ambianceId} />
+                    <input
+                        type="range"
+                        min="0"
+                        max={sliderVolumeMaxRange}
+                        step="0.01"
+                        value={AmbianceVolume}
+                        onChange={handleAmbianceVolumeChange}
+                        style={getInputRangeBackgroundSize(AmbianceVolume, sliderVolumeMaxRange)}
+                        disabled={currentPlayingAmbiance !== ambianceId}
+                    />
+                </div>
 
-                <PlayPauseButton onClickAction={togglePlayPause} initialDisabled={currentPlayingAmbiance === ambianceId} />
-                <input
-                    type="range"
-                    min="0"
-                    max={sliderVolumeMaxRange}
-                    step="0.01"
-                    value={AmbianceVolume}
-                    onChange={handleAmbianceVolumeChange}
-                    style={getInputRangeBackgroundSize(AmbianceVolume, sliderVolumeMaxRange)}
-                    disabled={currentPlayingAmbiance !== ambianceId}
-                />
             </header>
 
             <div className={styles.audioList}>

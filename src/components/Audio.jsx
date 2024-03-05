@@ -57,10 +57,9 @@ const Audio = ({ name, audioId, icon, file, isAmbiancePlaying, ambianceVolume })
 
     return (
         <div id={audioId}>
-            <h2>{name}{icon}</h2>
-            <PlayPauseButton onClickAction={togglePlay} initialDisabled={isPlaying} emoji={icon} />
 
-            <button onClick={togglePlay}>{isPlaying ? 'Pause' : 'Play'}</button>
+            <PlayPauseButton onClickAction={togglePlay} initialDisabled={isPlaying} emoji={icon} title={name} />
+
             {isPlaying &&
                 <div className={styles.slider}>
                     <input
@@ -75,9 +74,7 @@ const Audio = ({ name, audioId, icon, file, isAmbiancePlaying, ambianceVolume })
                     />
                 </div>
             }
-            {isPlaying && <p>Playing</p>}
-            {isAmbiancePlaying && <p>Ambiance is playing</p>}
-            <p>file: {file}</p>
+
             <audio ref={audioRef} controls={false} loop>
                 <source src={file} type="audio/mpeg" />
                 Your browser does not support the audio element.

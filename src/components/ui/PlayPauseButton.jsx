@@ -3,16 +3,20 @@ import IconPause from "../../assets/icons/pause.svg";
 import IconPlay from "../../assets/icons/play.svg";
 import usePlayPauseButton from "../../hooks/usePlayPauseButton";
 
-export default function PlayPauseButton({ initialDisabled, onClickAction, emoji }) {
+export default function PlayPauseButton({ initialDisabled, onClickAction, emoji, title }) {
     const [isPlaying, handleClick] = usePlayPauseButton(initialDisabled, onClickAction);
     emoji ? console.log(`play pause button ${emoji} isplaying:${isPlaying}`) : null;
 
 
     return (
-        <button className={`button-toggle ${!initialDisabled ? 'fade' : ''} `} onClick={handleClick}>
+        <button
+            className={`button-toggle ${!initialDisabled ? 'fade' : ''} `}
+            title={`${initialDisabled ? 'turn off ' : 'turn on '}${title}`}
+            onClick={handleClick}
+        >
             {
                 emoji ? (
-                    <span role="img" aria-label="emoji">{emoji}</span>
+                    emoji
                 ) : (
                     isPlaying ?
                         (
