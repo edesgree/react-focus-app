@@ -1,28 +1,56 @@
 import React from "react";
 import styles from "./Audio.module.scss";
 
-export default function Audio({ name, audioId, file }) {
-    const [isPlaying, setIsPlaying] = React.useState(false);
+const Audio = ({ name, audioId, file, isAmbiancePlaying }) => {
+
+    //const { isAmbiancePlaying } = React.useContext(PlayPauseContext);
+
+    const [isPlaying, setIsPlaying] = React.useState(null);
     const [volume, setVolume] = React.useState(.5);
+
     const audioRef = React.useRef(null);
-    const togglePlay = () => {
-        if (isPlaying) {
-            audioRef.current.pause();
-        } else {
-            audioRef.current.play();
+
+
+    React.useEffect(() => {
+        const audioElement = audioRef.current;
+        // Ensure that the audio element is paused when the component mounts
+        if (audioElement) {
+            if (isAmbiancePlaying) {
+                audioElement.play();
+                setIsPlaying(true);
+            } else {
+                audioElement.pause();
+                setIsPlaying(false);
+            }
         }
-        setIsPlaying(!isPlaying);
-        console.log(file);
+        console.log('isAmbiancePlaying in audio', isAmbiancePlaying);
+    }, [isAmbiancePlaying]); // Run this effect only once after the component mounts
+
+
+    const togglePlay = () => {
+        const audioElement = audioRef.current;
+        if (audioElement?.paused) {
+            audioElement.play();
+        } else {
+            audioElement.pause();
+        }
+        setIsPlaying(prevState => !prevState);
+        console.log(file); // Log file
     };
+
     const handleVolumeChange = (e) => {
+        const audioElement = audioRef.current;
         setVolume(e.target.value);
-        audioRef.current.volume = e.target.value;
+        // change volume of current audio element
+        if (audioElement) {
+            audioElement.volume = e.target.value;
+        }
+
     };
 
-
-    const MAX = 1;
-    const getBackgroundSize = () => {
-        return { backgroundSize: `${(volume * 100) / MAX}% 100%` };
+    const sliderVolumeMaxRange = 1;
+    const getSliderVolumeBackgroundSize = () => {
+        return { backgroundSize: `${(volume * 100) / sliderVolumeMaxRange}% 100%` };
     };
 
     return (
@@ -33,11 +61,11 @@ export default function Audio({ name, audioId, file }) {
                 <input
                     type="range"
                     min="0"
-                    max={MAX}
+                    max={sliderVolumeMaxRange}
                     step="0.01"
                     value={volume}
                     onChange={handleVolumeChange}
-                    style={getBackgroundSize()}
+                    style={getSliderVolumeBackgroundSize()}
                     disabled={!isPlaying}
                 />
             </div>
@@ -49,5 +77,6 @@ export default function Audio({ name, audioId, file }) {
 
         </div>
     );
-}
+};
 
+export default Audio;
