@@ -1,4 +1,0 @@
-[ZoneTransfer]
-ZoneId=3
-ReferrerUrl=https://cloudconvert.com/
-HostUrl=https://eu-central.storage.cloudconvert.com/tasks/8f5060fe-cc65-4fe5-873b-d3d25b585bc7/waves-1.mp3?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cloudconvert-production%2F20240304%2Ffra%2Fs3%2Faws4_request&X-Amz-Date=20240304T140519Z&X-Amz-Expires=86400&X-Amz-Signature=8b404f8073c9b2e75588fa88b34f76e5bac4b4956944246465c1a9822a47af90&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3D%22waves-1.mp3%22&response-content-type=audio%2Fmpeg&x-id=GetObject

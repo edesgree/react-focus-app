@@ -1,15 +1,43 @@
 import React from "react";
+import { getAudios } from "../utils/api";
 import styles from "./Ambiance.module.scss";
 import Audio from "./Audio";
 //import { usePlayPause } from "./PlayPauseContext";
+import { getInputRangeBackgroundSize } from "../utils/utils";
 import PlayPauseButton from "./ui/PlayPauseButton";
-import { getInputRangeBackgroundSize } from "./utils/utils";
 
-export default function Ambiance({ name, icon, audios, ambianceId, currentPlayingAmbiance, setCurrentPlayingAmbiance }) {
+export default function Ambiance({ name, icon, ambianceAudiosIds, ambianceId, currentPlayingAmbiance, setCurrentPlayingAmbiance }) {
     //const { isAmbiancePlaying, togglePlayPause } = usePlayPause();
     //const [isAmbiancePlaying, setIsAmbiancePlaying] = React.useState(false);
+    const [audios, setAudios] = React.useState([]);
+    const [loading, setLoading] = React.useState(true);
+    const [error, setError] = React.useState(null);
     const [AmbianceVolume, setAmbianceVolume] = React.useState(.5);
+
     const sliderVolumeMaxRange = 1;
+    /*const ambianceAudios = ambianceAudiosIds.map((audioId) => {
+        return ambianceAudiosIds.find((audio) => audio.id === audioId);
+    });*/
+    React.useEffect(() => {
+        async function loadAudios() {
+            setLoading(true);
+            try {
+                const data = await getAudios();
+                // filter audios to corresponding ambiance
+                const dataFiltered = data.filter((audio) => ambianceAudiosIds.includes(audio.id));
+
+                setAudios(dataFiltered);
+            } catch (err) {
+                console.log('error', err);
+                setError(err);
+            } finally {
+                setLoading(false);
+            }
+        }
+        loadAudios();
+    }, []);
+
+
     const togglePlayPause = () => {
         if (currentPlayingAmbiance === ambianceId) {
             setCurrentPlayingAmbiance(null);
@@ -21,7 +49,7 @@ export default function Ambiance({ name, icon, audios, ambianceId, currentPlayin
         setAmbianceVolume(e.target.value);
         console.log('ambiance volume', AmbianceVolume);
     };
-    const audioElements = audios.map((audio, index) => {
+    const audioElements = audios.map((audio) => {
         return (
             <Audio
                 key={audio.id}
@@ -34,6 +62,12 @@ export default function Ambiance({ name, icon, audios, ambianceId, currentPlayin
         );
     });
 
+    if (loading) {
+        return <h1 aria-live="polite">Loading...</h1>;
+    }
+    if (error) {
+        return <h1 aria-live="assertive">There was an error: {error.message}</h1>;
+    }
     return (
         <div title={name}>
             <header>

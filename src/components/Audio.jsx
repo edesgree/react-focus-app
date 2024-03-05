@@ -1,7 +1,7 @@
 import React from "react";
+import { getInputRangeBackgroundSize } from "../utils/utils";
 import styles from "./Audio.module.scss";
 import PlayPauseButton from "./ui/PlayPauseButton";
-import { getInputRangeBackgroundSize } from "./utils/utils";
 
 const Audio = ({ name, audioId, icon, file, isAmbiancePlaying, ambianceVolume }) => {
 
@@ -77,6 +77,7 @@ const Audio = ({ name, audioId, icon, file, isAmbiancePlaying, ambianceVolume })
             }
             {isPlaying && <p>Playing</p>}
             {isAmbiancePlaying && <p>Ambiance is playing</p>}
+            <p>file: {file}</p>
             <audio ref={audioRef} controls={false} loop>
                 <source src={file} type="audio/mpeg" />
                 Your browser does not support the audio element.
