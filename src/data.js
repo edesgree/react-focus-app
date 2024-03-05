@@ -15,14 +15,16 @@ export const ambianceData = [
         name: 'Forest',
         audiosId: [
             'insects-1', 'wind-1', 'birds-1'
-        ]
+        ],
+        emoji: '🌲'
     },
     {
         id: 2,
-        name: 'Seaside',
+        name: 'Beach',
         audiosId: [
             'wind-1', 'waves-1', 'seagull-1'
         ],
+        emoji: '🏖️'
     },
     {
         id: 3,
@@ -30,6 +32,8 @@ export const ambianceData = [
         audiosId: [
             'insects-1', 'birds-1', 'rain-1'
         ],
+        emoji: '🦜'
+
     },
     {
         id: 4,
@@ -37,6 +41,7 @@ export const ambianceData = [
         audiosId: [
             'people-1', 'cat-1', 'jazz-1'
         ],
+        emoji: '☕'
     },
     {
         id: 5,
@@ -44,58 +49,69 @@ export const ambianceData = [
         audiosId: [
             'rain-1', 'thunder-1', 'wind-1'
         ],
+        emoji: '⛈️'
     }
 ];
 export const audios = [
     {
         id: 'birds-1',
         name: 'Birds',
-        file: birds1
+        file: birds1,
+        emoji: '🐦'
     },
     {
         id: 'waves-1',
         name: 'Waves',
-        file: waves1
+        file: waves1,
+        emoji: '🌊'
     },
     {
         id: 'insects-1',
         name: 'Insects',
-        file: insects1
+        file: insects1,
+        emoji: '🐞'
     },
     {
         id: 'cat-1',
         name: 'cat',
-        file: cat1
+        file: cat1,
+        emoji: '🐱'
     },
     {
         id: 'rain-1',
         name: 'Rain',
-        file: rain1
+        file: rain1,
+        emoji: '🌧️'
     },
     {
         id: 'thunder-1',
         name: 'Thunder',
-        file: thunder1
+        file: thunder1,
+        emoji: '⚡'
     },
     {
         id: 'wind-1',
         name: 'Wind',
-        file: wind1
+        file: wind1,
+        emoji: '💨'
     },
     {
         id: 'seagull-1',
         name: 'Seagull',
-        file: seagull1
+        file: seagull1,
+        emoji: '🐦‍⬛'
     },
     {
         id: 'people-1',
         name: 'People',
-        file: people1
+        file: people1,
+        emoji: '👥'
     },
     {
         id: 'jazz-1',
         name: 'Jazz',
-        file: jazz1
+        file: jazz1,
+        emoji: '🎷'
     }
 ];
 

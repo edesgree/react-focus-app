@@ -13,6 +13,7 @@ export default function Ambiances({ children }) {
             key={ambiance.id}
             ambianceId={ambiance.id}
             name={ambiance.name}
+            icon={ambiance.emoji}
             audios={ambianceAudios}
             currentPlayingAmbiance={currentPlayingAmbiance}
             setCurrentPlayingAmbiance={setCurrentPlayingAmbiance}

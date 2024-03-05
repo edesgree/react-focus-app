@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Audio.module.scss";
-
-const Audio = ({ name, audioId, file, isAmbiancePlaying }) => {
+import { getInputRangeBackgroundSize } from "./utils/utils";
+const Audio = ({ name, audioId, icon, file, isAmbiancePlaying, ambianceVolume }) => {
 
     //const { isAmbiancePlaying } = React.useContext(PlayPauseContext);
 
@@ -9,7 +9,7 @@ const Audio = ({ name, audioId, file, isAmbiancePlaying }) => {
     const [volume, setVolume] = React.useState(.5);
 
     const audioRef = React.useRef(null);
-
+    const sliderVolumeMaxRange = 1;
 
     React.useEffect(() => {
         const audioElement = audioRef.current;
@@ -24,9 +24,20 @@ const Audio = ({ name, audioId, file, isAmbiancePlaying }) => {
             }
         }
         console.log('isAmbiancePlaying in audio', isAmbiancePlaying);
-    }, [isAmbiancePlaying]); // Run this effect only once after the component mounts
+    }, [isAmbiancePlaying]);
 
+    React.useEffect(() => {
+        setVolumeFn(ambianceVolume);
+    }, [ambianceVolume]);
 
+    const setVolumeFn = (value) => {
+        const audioElement = audioRef.current;
+        setVolume(value);
+        // change volume of current audio element
+        if (audioElement) {
+            audioElement.volume = volume;
+        }
+    };
     const togglePlay = () => {
         const audioElement = audioRef.current;
         if (audioElement?.paused) {
@@ -39,23 +50,15 @@ const Audio = ({ name, audioId, file, isAmbiancePlaying }) => {
     };
 
     const handleVolumeChange = (e) => {
-        const audioElement = audioRef.current;
-        setVolume(e.target.value);
-        // change volume of current audio element
-        if (audioElement) {
-            audioElement.volume = e.target.value;
-        }
+        setVolumeFn(e.target.value);
 
     };
 
-    const sliderVolumeMaxRange = 1;
-    const getSliderVolumeBackgroundSize = () => {
-        return { backgroundSize: `${(volume * 100) / sliderVolumeMaxRange}% 100%` };
-    };
+
 
     return (
         <div id={audioId}>
-            <h5>{name}</h5>
+            <h2>{name}{icon}</h2>
             <button onClick={togglePlay}>{isPlaying ? 'Pause' : 'Play'}</button>
             <div className={styles.slider}>
                 <input
@@ -65,7 +68,7 @@ const Audio = ({ name, audioId, file, isAmbiancePlaying }) => {
                     step="0.01"
                     value={volume}
                     onChange={handleVolumeChange}
-                    style={getSliderVolumeBackgroundSize()}
+                    style={getInputRangeBackgroundSize(volume, sliderVolumeMaxRange)}
                     disabled={!isPlaying}
                 />
             </div>
