@@ -1,10 +1,11 @@
-.audioList {
+.ambiancesList {
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(3, 1fr);
+
+
 }
 
-header {
-  align-items: center;
-  display: flex;
+.selected {
+  background-color: var(--light-blue);
 }

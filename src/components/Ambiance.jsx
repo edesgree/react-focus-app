@@ -35,18 +35,21 @@ export default function Ambiance({ name, icon, audios, ambianceId, currentPlayin
 
     return (
         <div title={name}>
-            <h2>Ambiance {name} {icon}</h2>
-            <button onClick={togglePlayPause}>{currentPlayingAmbiance === ambianceId ? 'Pause' : 'Play'}</button>
-            <input
-                type="range"
-                min="0"
-                max={sliderVolumeMaxRange}
-                step="0.01"
-                value={AmbianceVolume}
-                onChange={handleAmbianceVolumeChange}
-                style={getInputRangeBackgroundSize(AmbianceVolume, sliderVolumeMaxRange)}
-                disabled={currentPlayingAmbiance !== ambianceId}
-            />
+            <header>
+                <h2>Ambiance {name} {icon}</h2>
+                <button onClick={togglePlayPause}>{currentPlayingAmbiance === ambianceId ? 'Pause' : 'Play'}</button>
+                <input
+                    type="range"
+                    min="0"
+                    max={sliderVolumeMaxRange}
+                    step="0.01"
+                    value={AmbianceVolume}
+                    onChange={handleAmbianceVolumeChange}
+                    style={getInputRangeBackgroundSize(AmbianceVolume, sliderVolumeMaxRange)}
+                    disabled={currentPlayingAmbiance !== ambianceId}
+                />
+            </header>
+
             <div className={styles.audioList}>
                 {audioElements}
             </div>
