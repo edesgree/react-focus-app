@@ -72,7 +72,7 @@ export default function Ambiance({ name, icon, ambianceAudiosIds, ambianceId, cu
     return (
         <div className={styles.ambiance}>
             <header>
-                <h2>{name} {icon}</h2>
+                <h2 className={styles.title}>{name} <span>{icon}</span></h2>
                 <div className={styles.controls}>
                     <PlayPauseButton onClickAction={togglePlayPause} initialDisabled={isAmbiancePlaying} title={name} />
                     <input

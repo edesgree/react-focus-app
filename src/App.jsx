@@ -5,7 +5,7 @@ function App() {
 
     return (
         <>
-            <h1>Focus app 🌞</h1>
+            <h1>Soundscape app 🌞</h1>
             <Ambiances />
         </>
     );
