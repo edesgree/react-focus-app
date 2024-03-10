@@ -1,8 +1,42 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Soundscape app in ReactJS
 
-Currently, two official plugins are available:
+The project is to build an app that can play different sound ambiances. Each ambiance has several audio tracks that can be turned on and off and the volume adjusted. 
+It is bootstraped with Vite.js.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔗 **Live preview:** [here](https://enchanting-shortbread-f59db7.netlify.app/)
+
+### Screenshot
+
+![screenshot](./screenshot.jpg)
+
+## Built with
+
+### Technologies
+
+- HTML
+- CSS
+- React JS
+
+### Tools
+
+- Vite
+- mirageJS for server mockup
+
+## Features
+
+- Use of pinia to store ambiances states
+- API calls to get audios and ambiances data
+- Choice of different audio ambiances
+- Audios tracks selectable
+
+## What I learned
+
+- Better knowledge of **React JS**.
+- mirageJS
+
+## Author
+
+👤 **Edouard Desgrée**
+
+- GitHub: [edesgree](https://github.com/edesgree)
